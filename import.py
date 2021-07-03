@@ -22,7 +22,7 @@ data = '2021-07-01'
 
 
 
-# tabula.convert_into(pdf_path, tsv_path , pages="all", output_format="tsv", stream=True)
+tabula.convert_into(pdf_path, tsv_path , pages="all", output_format="tsv", stream=True)
 
 try:
 #    conn_string = "host='localhost' dbname='liczniki' user='czarek' password='paselko'"
