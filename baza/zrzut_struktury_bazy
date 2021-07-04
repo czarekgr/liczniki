@@ -2,5 +2,5 @@
 
 
 pg_dump -s liczniki > liczniki_pusta.sql
-pg_dump -t liczniki -t rodzaje_licz liczniki > dane_licznikow.sql
+pg_dump --data-only -t liczniki -t rodzaje_licz liczniki > dane_licznikow.sql
 

@@ -16,38 +16,17 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
-SET default_tablespace = '';
-
-SET default_with_oids = false;
-
 --
--- Name: liczniki; Type: TABLE; Schema: public; Owner: czarek
+-- Data for Name: rodzaje_licz; Type: TABLE DATA; Schema: public; Owner: czarek
 --
 
-CREATE TABLE public.liczniki (
-    adres character varying NOT NULL,
-    nr_fabryczny character varying,
-    opis character varying,
-    lokalizacja character varying,
-    rodzaj character varying(3),
-    kolejnosc integer
-);
+COPY public.rodzaje_licz (rodzaj, rodzaj_licznika, jednostka) FROM stdin;
+ELE	elektryczny	kWh
+LC	ciepła	MJ
+LH	chłodu	MJ
+WOD	wody	m^3
+\.
 
-
-ALTER TABLE public.liczniki OWNER TO czarek;
-
---
--- Name: rodzaje_licz; Type: TABLE; Schema: public; Owner: czarek
---
-
-CREATE TABLE public.rodzaje_licz (
-    rodzaj character varying(3) NOT NULL,
-    rodzaj_licznika character varying,
-    jednostka character varying
-);
-
-
-ALTER TABLE public.rodzaje_licz OWNER TO czarek;
 
 --
 -- Data for Name: liczniki; Type: TABLE DATA; Schema: public; Owner: czarek
@@ -324,50 +303,6 @@ LM_ELE_ADR018	63326011	Rozdzielnica RM (63326011)	\N	ELE	1900
 LM_ELE_ADR020	63311020	Tablice TA 3.3, TA 3.4, TA 3.5 (63311020)	\N	ELE	1910
 LM_ELE_ADR022	33344025	Tablice TA 2.-1, TA 2.2, TA 2.3, TA 2.4 (33344025)	\N	ELE	1920
 \.
-
-
---
--- Data for Name: rodzaje_licz; Type: TABLE DATA; Schema: public; Owner: czarek
---
-
-COPY public.rodzaje_licz (rodzaj, rodzaj_licznika, jednostka) FROM stdin;
-ELE	elektryczny	kWh
-LC	ciepła	MJ
-LH	chłodu	MJ
-WOD	wody	m^3
-\.
-
-
---
--- Name: liczniki liczniki_kolejnosc_key; Type: CONSTRAINT; Schema: public; Owner: czarek
---
-
-ALTER TABLE ONLY public.liczniki
-    ADD CONSTRAINT liczniki_kolejnosc_key UNIQUE (kolejnosc);
-
-
---
--- Name: liczniki liczniki_pkey; Type: CONSTRAINT; Schema: public; Owner: czarek
---
-
-ALTER TABLE ONLY public.liczniki
-    ADD CONSTRAINT liczniki_pkey PRIMARY KEY (adres);
-
-
---
--- Name: rodzaje_licz rodzaje_licz_pkey; Type: CONSTRAINT; Schema: public; Owner: czarek
---
-
-ALTER TABLE ONLY public.rodzaje_licz
-    ADD CONSTRAINT rodzaje_licz_pkey PRIMARY KEY (rodzaj);
-
-
---
--- Name: liczniki liczniki_rodzaj_fkey; Type: FK CONSTRAINT; Schema: public; Owner: czarek
---
-
-ALTER TABLE ONLY public.liczniki
-    ADD CONSTRAINT liczniki_rodzaj_fkey FOREIGN KEY (rodzaj) REFERENCES public.rodzaje_licz(rodzaj);
 
 
 --
