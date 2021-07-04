@@ -4,7 +4,8 @@
 import tabula 
 import psycopg2
 import sys
-#check your environment via tabula-py,which shows Python, Java #version, Java version, and your OS environment.
+import dateutil
+from datetime import date , timedelta
 
 # Dane do połączenia z bazą
 baza = "liczniki"
@@ -17,9 +18,8 @@ password = "paselko"
 pdf_path = "raport.pdf"
 tsv_path = "raport.tsv"
 
-# data odczytu, będzie z wiersza poleceń lub zegara
-data = '2021-07-01'
-
+# Pobranie daty + 10 dni na wypadek konieczności robienia wcześniej, dzień ustawiony na 1
+data = (date.today() + timedelta(days=10)).replace(day=1)
 
 
 tabula.convert_into(pdf_path, tsv_path , pages="all", output_format="tsv", stream=True)
