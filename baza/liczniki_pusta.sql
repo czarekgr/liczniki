@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 11.7 (Ubuntu 11.7-0ubuntu0.19.10.1)
--- Dumped by pg_dump version 11.7 (Ubuntu 11.7-0ubuntu0.19.10.1)
+-- Dumped from database version 12.7 (Ubuntu 12.7-0ubuntu0.20.04.1)
+-- Dumped by pg_dump version 12.7 (Ubuntu 12.7-0ubuntu0.20.04.1)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -18,7 +18,7 @@ SET row_security = off;
 
 SET default_tablespace = '';
 
-SET default_with_oids = false;
+SET default_table_access_method = heap;
 
 --
 -- Name: liczniki; Type: TABLE; Schema: public; Owner: czarek
@@ -30,11 +30,48 @@ CREATE TABLE public.liczniki (
     opis character varying,
     lokalizacja character varying,
     rodzaj character varying(3),
+    kolejnosc_pdf integer,
+    najemca integer,
     kolejnosc integer
 );
 
 
 ALTER TABLE public.liczniki OWNER TO czarek;
+
+--
+-- Name: najemcy; Type: TABLE; Schema: public; Owner: czarek
+--
+
+CREATE TABLE public.najemcy (
+    id integer NOT NULL,
+    nazwa character varying,
+    telefon character varying
+);
+
+
+ALTER TABLE public.najemcy OWNER TO czarek;
+
+--
+-- Name: najemcy_id_seq; Type: SEQUENCE; Schema: public; Owner: czarek
+--
+
+CREATE SEQUENCE public.najemcy_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.najemcy_id_seq OWNER TO czarek;
+
+--
+-- Name: najemcy_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: czarek
+--
+
+ALTER SEQUENCE public.najemcy_id_seq OWNED BY public.najemcy.id;
+
 
 --
 -- Name: odczyty; Type: TABLE; Schema: public; Owner: czarek
@@ -63,11 +100,18 @@ CREATE TABLE public.rodzaje_licz (
 ALTER TABLE public.rodzaje_licz OWNER TO czarek;
 
 --
+-- Name: najemcy id; Type: DEFAULT; Schema: public; Owner: czarek
+--
+
+ALTER TABLE ONLY public.najemcy ALTER COLUMN id SET DEFAULT nextval('public.najemcy_id_seq'::regclass);
+
+
+--
 -- Name: liczniki liczniki_kolejnosc_key; Type: CONSTRAINT; Schema: public; Owner: czarek
 --
 
 ALTER TABLE ONLY public.liczniki
-    ADD CONSTRAINT liczniki_kolejnosc_key UNIQUE (kolejnosc);
+    ADD CONSTRAINT liczniki_kolejnosc_key UNIQUE (kolejnosc_pdf);
 
 
 --
@@ -76,6 +120,14 @@ ALTER TABLE ONLY public.liczniki
 
 ALTER TABLE ONLY public.liczniki
     ADD CONSTRAINT liczniki_pkey PRIMARY KEY (adres);
+
+
+--
+-- Name: najemcy najemcy_pkey; Type: CONSTRAINT; Schema: public; Owner: czarek
+--
+
+ALTER TABLE ONLY public.najemcy
+    ADD CONSTRAINT najemcy_pkey PRIMARY KEY (id);
 
 
 --
@@ -92,6 +144,14 @@ ALTER TABLE ONLY public.odczyty
 
 ALTER TABLE ONLY public.rodzaje_licz
     ADD CONSTRAINT rodzaje_licz_pkey PRIMARY KEY (rodzaj);
+
+
+--
+-- Name: liczniki liczniki_najemca_fkey; Type: FK CONSTRAINT; Schema: public; Owner: czarek
+--
+
+ALTER TABLE ONLY public.liczniki
+    ADD CONSTRAINT liczniki_najemca_fkey FOREIGN KEY (najemca) REFERENCES public.najemcy(id);
 
 
 --
