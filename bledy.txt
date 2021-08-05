@@ -1,0 +1,34 @@
+
+
+Błędy dla Sautera
+
+
+Błędnie wyszedł w pdf, data pdf 2021-07-30
+
+liczniki=> select * from liczniki where nr_fabryczny like '1816331023%';
+     adres     | nr_fabryczny |                   opis                    | lokalizacja | rodzaj | kolejnosc_pdf | najemca | kolejnosc 
+---------------+--------------+-------------------------------------------+-------------+--------+---------------+---------+-----------
+ LM_ELE_ADR114 | 1816331023   | Licznik elektryczny AUDI - TU4 (33331023) |             | ELE    |          1550 |         |      1030
+(1 row)
+
+
+liczniki=> select * from odczyty where adres like '%114' order by data;
+    data    |     adres     |  odczyt   
+------------+---------------+-----------
+ 2021-06-01 | LM_ELE_ADR114 | 207899.48
+ 2021-07-01 | LM_ELE_ADR114 | 213759.08
+ 2021-08-01 | LM_ELE_ADR114 |      8.22  -- PDF z 2021-07-30 data naciągana do 1 ze względu na łatwiejsze pisanie zapytań
+(3 rows)
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------
+
+liczniki=> select * from odczyty where adres like 'LM_ELE_ADR121' order by data;
+    data    |     adres     |  odczyt   
+------------+---------------+-----------
+ 2021-06-01 | LM_ELE_ADR121 |     85.44  -- PDF z 2021-05-31
+ 2021-07-01 | LM_ELE_ADR121 | 158906.41  -- PDF z 2021-07-01
+ 2021-08-01 | LM_ELE_ADR121 |     85.44  -- PDF z 2021-07-30
+(3 rows)
+
