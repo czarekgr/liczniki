@@ -16,6 +16,49 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
+--
+-- Name: srednia(character varying, date, integer); Type: FUNCTION; Schema: public; Owner: czarek
+--
+
+CREATE FUNCTION public.srednia(adr character varying, dt date, okres integer DEFAULT 12) RETURNS numeric
+    LANGUAGE plpgsql
+    AS $$
+DECLARE
+	wynik decimal(10,3);
+	dt_start date;
+
+BEGIN
+
+	dt_start = dt-(concat(okres,' month')::interval);
+	wynik := ((SELECT odczyt FROM odczyty WHERE data = dt AND adres=adr)
+       		 - (SELECT odczyt FROM odczyty WHERE data =dt_start  AND adres=adr))/okres;	
+	RETURN wynik;
+END;
+$$;
+
+
+ALTER FUNCTION public.srednia(adr character varying, dt date, okres integer) OWNER TO czarek;
+
+--
+-- Name: zuzycie(character varying, date); Type: FUNCTION; Schema: public; Owner: czarek
+--
+
+CREATE FUNCTION public.zuzycie(adr character varying, dt date) RETURNS numeric
+    LANGUAGE plpgsql
+    AS $$
+DECLARE
+	wynik decimal(10,3);
+
+BEGIN
+	wynik := (SELECT odczyt FROM odczyty WHERE data = dt AND adres=adr)
+       		 - (SELECT odczyt FROM odczyty WHERE data =dt-interval '1 month'  AND adres=adr);	
+	RETURN wynik;
+END;
+$$;
+
+
+ALTER FUNCTION public.zuzycie(adr character varying, dt date) OWNER TO czarek;
+
 SET default_tablespace = '';
 
 SET default_table_access_method = heap;
@@ -32,7 +75,8 @@ CREATE TABLE public.liczniki (
     rodzaj character varying(3),
     kolejnosc_pdf integer,
     najemca integer,
-    kolejnosc integer
+    kolejnosc integer,
+    uwagi character varying
 );
 
 
@@ -98,6 +142,32 @@ CREATE TABLE public.rodzaje_licz (
 
 
 ALTER TABLE public.rodzaje_licz OWNER TO czarek;
+
+--
+-- Name: wyniki; Type: VIEW; Schema: public; Owner: czarek
+--
+
+CREATE VIEW public.wyniki AS
+ SELECT liczniki.kolejnosc,
+    odczyty.data,
+    odczyty.adres,
+    liczniki.nr_fabryczny,
+    odczyty.odczyt,
+    rodzaje_licz.jednostka,
+    public.srednia(odczyty.adres, odczyty.data, 1) AS srednia,
+    public.zuzycie(odczyty.adres, odczyty.data) AS zuzycie,
+    (
+        CASE
+            WHEN (public.srednia(odczyty.adres, odczyty.data, 1) = (0)::numeric) THEN (0)::numeric
+            ELSE (((public.zuzycie(odczyty.adres, odczyty.data) - public.srednia(odczyty.adres, odczyty.data, 1)) * (100)::numeric) / public.srednia(odczyty.adres, odczyty.data, 1))
+        END)::numeric(10,2) AS "wzrost % wzgl. średniej"
+   FROM ((public.odczyty
+     JOIN public.liczniki USING (adres))
+     JOIN public.rodzaje_licz USING (rodzaj))
+  ORDER BY odczyty.data DESC, liczniki.kolejnosc;
+
+
+ALTER TABLE public.wyniki OWNER TO czarek;
 
 --
 -- Name: najemcy id; Type: DEFAULT; Schema: public; Owner: czarek
