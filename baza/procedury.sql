@@ -35,20 +35,21 @@ $$ LANGUAGE plpgsql;
 CREATE OR REPLACE VIEW wyniki AS 
  SELECT kolejnosc,
 	data,
-	adres,
+	liczniki.adres,
 	nr_fabryczny,
 	odczyt,
 	jednostka,
-	srednia(adres, data, 1) AS srednia,
-	zuzycie(adres, data) AS zuzycie,
-	CASE WHEN srednia(adres, data, 1) = 0 THEN 0 
+	srednia(odczyty.adres, data, 1) AS srednia,
+	zuzycie(odczyty.adres, data) AS zuzycie,
+	CASE WHEN srednia(odczyty.adres, data, 1) = 0 THEN 0 
 	ELSE 
-		(zuzycie(adres, data)-srednia(adres, data, 1))*100/srednia(adres, data, 1)  
+		(zuzycie(odczyty.adres, data)-srednia(odczyty.adres, data, 1))*100/srednia(odczyty.adres, data, 1)  
 	END :: numeric(10,2) AS "wzrost % wzgl. średniej"
 	-- Dzielenie przez 0, poprawić
  FROM odczyty
- NATURAL JOIN liczniki
- NATURAL JOIN rodzaje_licz
+ NATURAL RIGHT JOIN liczniki
+ JOIN ordung ON (liczniki.adres=ordung.adres)
+ NATURAL LEFT JOIN rodzaje_licz
  ORDER BY data DESC, kolejnosc;
 
 

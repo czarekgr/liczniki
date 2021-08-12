@@ -75,7 +75,7 @@ CREATE TABLE public.liczniki (
     rodzaj character varying(3),
     kolejnosc_pdf integer,
     najemca integer,
-    kolejnosc integer,
+    kolejnosc_exel integer,
     uwagi character varying
 );
 
@@ -131,6 +131,18 @@ CREATE TABLE public.odczyty (
 ALTER TABLE public.odczyty OWNER TO czarek;
 
 --
+-- Name: ordung; Type: TABLE; Schema: public; Owner: czarek
+--
+
+CREATE TABLE public.ordung (
+    adres character varying,
+    kolejnosc integer
+);
+
+
+ALTER TABLE public.ordung OWNER TO czarek;
+
+--
 -- Name: rodzaje_licz; Type: TABLE; Schema: public; Owner: czarek
 --
 
@@ -148,9 +160,9 @@ ALTER TABLE public.rodzaje_licz OWNER TO czarek;
 --
 
 CREATE VIEW public.wyniki AS
- SELECT liczniki.kolejnosc,
+ SELECT ordung.kolejnosc,
     odczyty.data,
-    odczyty.adres,
+    liczniki.adres,
     liczniki.nr_fabryczny,
     odczyty.odczyt,
     rodzaje_licz.jednostka,
@@ -161,10 +173,11 @@ CREATE VIEW public.wyniki AS
             WHEN (public.srednia(odczyty.adres, odczyty.data, 1) = (0)::numeric) THEN (0)::numeric
             ELSE (((public.zuzycie(odczyty.adres, odczyty.data) - public.srednia(odczyty.adres, odczyty.data, 1)) * (100)::numeric) / public.srednia(odczyty.adres, odczyty.data, 1))
         END)::numeric(10,2) AS "wzrost % wzgl. średniej"
-   FROM ((public.odczyty
-     JOIN public.liczniki USING (adres))
-     JOIN public.rodzaje_licz USING (rodzaj))
-  ORDER BY odczyty.data DESC, liczniki.kolejnosc;
+   FROM (((public.odczyty
+     RIGHT JOIN public.liczniki USING (adres))
+     JOIN public.ordung ON (((liczniki.adres)::text = (ordung.adres)::text)))
+     LEFT JOIN public.rodzaje_licz USING (rodzaj))
+  ORDER BY odczyty.data DESC, ordung.kolejnosc;
 
 
 ALTER TABLE public.wyniki OWNER TO czarek;
@@ -238,6 +251,14 @@ ALTER TABLE ONLY public.liczniki
 
 ALTER TABLE ONLY public.odczyty
     ADD CONSTRAINT odczyty_adres_fkey FOREIGN KEY (adres) REFERENCES public.liczniki(adres);
+
+
+--
+-- Name: ordung ordung_adres_fkey; Type: FK CONSTRAINT; Schema: public; Owner: czarek
+--
+
+ALTER TABLE ONLY public.ordung
+    ADD CONSTRAINT ordung_adres_fkey FOREIGN KEY (adres) REFERENCES public.liczniki(adres);
 
 
 --

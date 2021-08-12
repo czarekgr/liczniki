@@ -32,3 +32,39 @@ liczniki=> select * from odczyty where adres like 'LM_ELE_ADR121' order by data;
  2021-08-01 | LM_ELE_ADR121 |     85.44  -- PDF z 2021-07-30
 (3 rows)
 
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+Liczniki mające adres o nieznanym nr fabrycznym:
+
+liczniki=> select * from wyniki where nr_fabryczny='BRAK' and data='2021-08-01' order by adres; -- data PDF 2021-07-30
+
+ kolejnosc |    data    |     adres     | nr_fabryczny | odczyt | jednostka | srednia  | zuzycie  | wzrost % wzgl. średniej 
+-----------+------------+---------------+--------------+--------+-----------+----------+----------+-------------------------
+           | 2021-08-01 | LM_ELE_ADR060 | BRAK         |      0 | kWh       |    0.000 |    0.000 |                    0.00
+           | 2021-08-01 | LM_ELE_ADR061 | BRAK         |      0 | kWh       |    0.000 |    0.000 |                    0.00
+           | 2021-08-01 | LM_ELE_ADR063 | BRAK         |    189 | kWh       |    0.000 |    0.000 |                    0.00
+           | 2021-08-01 | LM_ELE_ADR064 | BRAK         |      0 | kWh       |    0.000 |    0.000 |                    0.00
+           | 2021-08-01 | LM_ELE_ADR065 | BRAK         |      0 | kWh       |    0.000 |    0.000 |                    0.00
+           | 2021-08-01 | LM_ELE_ADR073 | BRAK         |     80 | kWh       |    0.000 |    0.000 |                    0.00
+           | 2021-08-01 | LM_ELE_ADR074 | BRAK         |  64861 | kWh       | 1939.000 | 1939.000 |                    0.00
+           | 2021-08-01 | LM_WOD_MAIN_W | BRAK         |      0 | m^3       |    0.000 |    0.000 |                    0.00
+(8 rows)
+
+
+
+liczniki=> select adres, opis as Opis_w_PDF,kolejnosc_pdf/10 AS Kolejność_w_PDF from liczniki where nr_fabryczny ilike '%brak%' order by adres;
+     adres     |        opis_w_pdf         | kolejność_w_pdf 
+---------------+---------------------------+-----------------
+ LM_ELE_ADR060 | SP U1 - Powierzchnia 0.02 |              73
+ LM_ELE_ADR061 | SP U1 - Powierzchnia 0.03 |              74
+ LM_ELE_ADR063 | SP U1 - Powierzchnia 0.05 |             207
+ LM_ELE_ADR064 | SP U1 - Powierzchnia 1.02 |             208
+ LM_ELE_ADR065 | SP U1 - Powierzchnia 1.03 |              76
+ LM_ELE_ADR073 | SP U3 - Powierzchnia 0.10 |              81
+ LM_ELE_ADR074 | SP U3 - Powierzchnia 0.11 |             211
+ LM_WOD_MAIN_W |                           |              11
+(8 rows)
+
+
+
