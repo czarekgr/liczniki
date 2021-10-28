@@ -1,0 +1,29 @@
+1. Utworzyć raport ze wszystkich liczników w BMS.
+2. Wgrać raport do katalogu /home/czarek/Ethos
+3. Skopiować plik raportu do /home/czarek/Ethos/ArchiwumPDF
+4. Zmienić nazwę na raport.pdf
+5. Uruchomić skrypt import.py, dane zostaną zaimportowane do bazy,
+   data automatycznie zaokrąglona do 1
+6. Uruchomić konsolę:
+        psql liczniki
+7. Wstawić datę i uruchomić zapytanie:
+ 
+ copy (SELECT
+            kolejnosc,
+            adres,
+            nr_fabryczny,
+            odczyt,
+            zuzycie 
+         FROM
+            wyniki
+         WHERE
+            data='2021-10-01'   -- wstawić datę, dzień = 1
+         OR
+            data is null        -- liczniki wypełniacze bez daty 
+         ORDER BY kolejnosc) TO '/home/czarek/Ethos/liczniki/wynik.csv' WITH CSV;
+         
+8. Przerobić plik wynik.cvs na plik excela, wkleić dane do właściwego pliku
+         
+         
+         
+         
