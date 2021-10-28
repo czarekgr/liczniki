@@ -39,12 +39,12 @@ CREATE OR REPLACE VIEW wyniki AS
 	nr_fabryczny,
 	odczyt,
 	jednostka,
-	srednia(odczyty.adres, data, 1) AS srednia,
+	srednia(odczyty.adres, data, 3) AS srednia,
 	zuzycie(odczyty.adres, data) AS zuzycie,
-	CASE WHEN srednia(odczyty.adres, data, 1) = 0 THEN 0 
+	CASE WHEN srednia(odczyty.adres, data, 3) = 0 THEN 0 
 	ELSE 
-		(zuzycie(odczyty.adres, data)-srednia(odczyty.adres, data, 1))*100/srednia(odczyty.adres, data, 1)  
-	END :: numeric(10,2) AS "wzrost % wzgl. średniej"
+		(zuzycie(odczyty.adres, data)-srednia(odczyty.adres, data, 3))*100/srednia(odczyty.adres, data, 3)  
+	END :: numeric(10,2) AS "wzrost_procent_wzgledem_sredniej"
 	-- Dzielenie przez 0, poprawić
  FROM odczyty
  NATURAL RIGHT JOIN liczniki
