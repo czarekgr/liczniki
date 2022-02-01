@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.7 (Ubuntu 12.7-0ubuntu0.20.04.1)
--- Dumped by pg_dump version 12.7 (Ubuntu 12.7-0ubuntu0.20.04.1)
+-- Dumped from database version 12.9 (Ubuntu 12.9-0ubuntu0.20.04.1)
+-- Dumped by pg_dump version 12.9 (Ubuntu 12.9-0ubuntu0.20.04.1)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -52,6 +52,10 @@ LM_WOD_ADR146	17803108	Główny wodomierz (11036701)	\N	WOD	1660	\N	10	\N
 LM_ELE_ADR090	2318334011	SP 3 - Tablica TN 3.5 - Solution Space L00 (65334011)	\N	ELE	2150	\N	1390	Do sprawdzenia, w pliku jest TN-1.0, modyfikacja na podstawie 2 poprzednich odczytów
 LM_ELE_ADR121	1818137046	Amaro L00 (35137046)	Amaro, we od recepcji Pl. 3 Krzyży, korytarzyk w lewo, po lewej tablica elektryczna	ELE	1740	13	1770	Błędne odczyty (skok) w pdf, nr fabryczny zgodny z fizycznym licznikiem
 ----	\N	---	\N	\N	\N	\N	\N	---
+LM_LC_ADR159	72461134	Licznik ciepła - Heban L00 (72461134)	\N	LC	2700	14	\N	\N
+LM_LC_ADR160	72461135	Licznik ciepła - Heban grzejniki (licznik na L-1) (72461135)	\N	LC	2710	14	\N	\N
+LM_LH_ADR167	72497589	Licznik chłodu - Heban L00 (72497589)	\N	LH	2720	14	\N	\N
+LM_WOD_ADR236	21728054	Wodomierz Heban L00 (21728054)	\N	WOD	2730	14	\N	\N
 LM_LH_ADR200	78251258	Licznik chłodu FC L03 - obieg FO (HC05, HC08) (78251258)	\N	LH	370	\N	\N	\N
 LM_LH_ADR208	62065887	Licznik chłodu serwerownia najemcy L03 - S (HC05) (62065887)	\N	LH	400	\N	\N	\N
 LM_LC_ADR93	67884164	Licznik ciepła - grzejnik Fabiana (67884164)	\N	LC	1350	\N	2040	\N

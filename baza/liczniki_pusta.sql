@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.7 (Ubuntu 12.7-0ubuntu0.20.04.1)
--- Dumped by pg_dump version 12.7 (Ubuntu 12.7-0ubuntu0.20.04.1)
+-- Dumped from database version 12.9 (Ubuntu 12.9-0ubuntu0.20.04.1)
+-- Dumped by pg_dump version 12.9 (Ubuntu 12.9-0ubuntu0.20.04.1)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -166,13 +166,13 @@ CREATE VIEW public.wyniki AS
     liczniki.nr_fabryczny,
     odczyty.odczyt,
     rodzaje_licz.jednostka,
-    public.srednia(odczyty.adres, odczyty.data, 1) AS srednia,
+    public.srednia(odczyty.adres, odczyty.data, 3) AS srednia,
     public.zuzycie(odczyty.adres, odczyty.data) AS zuzycie,
     (
         CASE
-            WHEN (public.srednia(odczyty.adres, odczyty.data, 1) = (0)::numeric) THEN (0)::numeric
-            ELSE (((public.zuzycie(odczyty.adres, odczyty.data) - public.srednia(odczyty.adres, odczyty.data, 1)) * (100)::numeric) / public.srednia(odczyty.adres, odczyty.data, 1))
-        END)::numeric(10,2) AS "wzrost % wzgl. średniej"
+            WHEN (public.srednia(odczyty.adres, odczyty.data, 3) = (0)::numeric) THEN (0)::numeric
+            ELSE (((public.zuzycie(odczyty.adres, odczyty.data) - public.srednia(odczyty.adres, odczyty.data, 3)) * (100)::numeric) / public.srednia(odczyty.adres, odczyty.data, 3))
+        END)::numeric(10,2) AS wzrost_procent_wzgledem_sredniej
    FROM (((public.odczyty
      RIGHT JOIN public.liczniki USING (adres))
      JOIN public.ordung ON (((liczniki.adres)::text = (ordung.adres)::text)))
