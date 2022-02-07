@@ -83,41 +83,6 @@ CREATE TABLE public.liczniki (
 ALTER TABLE public.liczniki OWNER TO czarek;
 
 --
--- Name: najemcy; Type: TABLE; Schema: public; Owner: czarek
---
-
-CREATE TABLE public.najemcy (
-    id integer NOT NULL,
-    nazwa character varying,
-    telefon character varying
-);
-
-
-ALTER TABLE public.najemcy OWNER TO czarek;
-
---
--- Name: najemcy_id_seq; Type: SEQUENCE; Schema: public; Owner: czarek
---
-
-CREATE SEQUENCE public.najemcy_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.najemcy_id_seq OWNER TO czarek;
-
---
--- Name: najemcy_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: czarek
---
-
-ALTER SEQUENCE public.najemcy_id_seq OWNED BY public.najemcy.id;
-
-
---
 -- Name: odczyty; Type: TABLE; Schema: public; Owner: czarek
 --
 
@@ -181,6 +146,58 @@ CREATE VIEW public.wyniki AS
 
 
 ALTER TABLE public.wyniki OWNER TO czarek;
+
+--
+-- Name: gotowe_na_01; Type: VIEW; Schema: public; Owner: czarek
+--
+
+CREATE VIEW public.gotowe_na_01 AS
+ SELECT wyniki.kolejnosc,
+    wyniki.adres,
+    wyniki.nr_fabryczny,
+    wyniki.odczyt,
+    wyniki.zuzycie
+   FROM public.wyniki
+  WHERE ((wyniki.data = (( SELECT (((date_part('year'::text, ((now())::date + 15)) || '-'::text) || date_part('month'::text, ((now())::date + 15))) || '-01'::text)))::date) OR (wyniki.data IS NULL))
+  ORDER BY wyniki.kolejnosc;
+
+
+ALTER TABLE public.gotowe_na_01 OWNER TO czarek;
+
+--
+-- Name: najemcy; Type: TABLE; Schema: public; Owner: czarek
+--
+
+CREATE TABLE public.najemcy (
+    id integer NOT NULL,
+    nazwa character varying,
+    telefon character varying
+);
+
+
+ALTER TABLE public.najemcy OWNER TO czarek;
+
+--
+-- Name: najemcy_id_seq; Type: SEQUENCE; Schema: public; Owner: czarek
+--
+
+CREATE SEQUENCE public.najemcy_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.najemcy_id_seq OWNER TO czarek;
+
+--
+-- Name: najemcy_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: czarek
+--
+
+ALTER SEQUENCE public.najemcy_id_seq OWNED BY public.najemcy.id;
+
 
 --
 -- Name: najemcy id; Type: DEFAULT; Schema: public; Owner: czarek
