@@ -10,6 +10,12 @@
 6. Uruchomić konsolę:
         psql liczniki
 7. Wstawić datę i uruchomić zapytanie:
+
+copy (SELECT * FROM gotowe_na_01) TO '/home/czarek/Ethos/liczniki/wynik.csv' WITH CSV;
+
+
+
+Stara wersja jakby trzeba podać datę (dzień miesiaca zawsze 01, bo takie sa dane)
  
  copy (SELECT
             kolejnosc,
@@ -20,7 +26,8 @@
          FROM
             wyniki
          WHERE
-            data='2022-02-01'   -- wstawić datę, dzień = 1
+            -- data='2022-02-01'   -- wstawić datę, dzień = 1 , poniżej automatyka ;)
+            data=(select extract(year from (now()::date +15)) ||'-'|| extract(month from (now()::date +15))||'-01')::date
          OR
             data is null        -- liczniki wypełniacze bez daty 
          ORDER BY kolejnosc) TO '/home/czarek/Ethos/liczniki/wynik.csv' WITH CSV;
