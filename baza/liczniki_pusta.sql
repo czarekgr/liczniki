@@ -200,6 +200,18 @@ ALTER SEQUENCE public.najemcy_id_seq OWNED BY public.najemcy.id;
 
 
 --
+-- Name: ordung_test; Type: TABLE; Schema: public; Owner: czarek
+--
+
+CREATE TABLE public.ordung_test (
+    adres character varying,
+    kolejnosc integer
+);
+
+
+ALTER TABLE public.ordung_test OWNER TO czarek;
+
+--
 -- Name: najemcy id; Type: DEFAULT; Schema: public; Owner: czarek
 --
 
