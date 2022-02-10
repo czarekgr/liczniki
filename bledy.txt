@@ -67,4 +67,21 @@ liczniki=> select adres, opis as Opis_w_PDF,kolejnosc_pdf/10 AS Kolejność_w_PD
 (8 rows)
 
 
+--------------------------------------------------------------------------------
+Data zaokrąglana do najbliższego 1 miesiąca!!!
+
+liczniki=# select * from odczyty where adres='LM_ELE_ADR114' order by data;
+    data    |     adres     |  odczyt   
+------------+---------------+-----------
+ 2021-06-01 | LM_ELE_ADR114 | 207899.48
+ 2021-07-01 | LM_ELE_ADR114 | 213759.08
+ 2021-08-01 | LM_ELE_ADR114 |      8.22
+ 2021-09-01 | LM_ELE_ADR114 |     27.81
+ 2021-10-01 | LM_ELE_ADR114 | 234686.39
+ 2021-11-01 | LM_ELE_ADR114 | 241310.66
+ 2021-12-01 | LM_ELE_ADR114 | 247634.91
+ 2022-01-01 | LM_ELE_ADR114 | 254182.16
+ 2022-02-01 | LM_ELE_ADR114 |     27.81
+(9 rows)
+
 
