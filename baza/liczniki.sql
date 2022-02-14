@@ -159,7 +159,7 @@ CREATE VIEW public.gotowe_na_01 AS
     wyniki.odczyt,
     wyniki.zuzycie
    FROM public.wyniki
-  WHERE ((wyniki.data = (( SELECT (((date_part('year'::text, ((now())::date + 15)) || '-'::text) || date_part('month'::text, ((now())::date + 15))) || '-01'::text)))::date) OR (wyniki.data IS NULL))
+  WHERE ((wyniki.data = (( SELECT (((date_part('year'::text, ((now())::date + 7)) || '-'::text) || date_part('month'::text, ((now())::date + 7))) || '-01'::text)))::date) OR (wyniki.data IS NULL))
   ORDER BY wyniki.kolejnosc;
 
 
@@ -252,7 +252,7 @@ CREATE VIEW public.wyniki_na_01_wojtek AS
     wyniki_wojtek.odczyt,
     wyniki_wojtek.zuzycie
    FROM public.wyniki_wojtek
-  WHERE ((wyniki_wojtek.data = (( SELECT (((date_part('year'::text, ((now())::date + 15)) || '-'::text) || date_part('month'::text, ((now())::date + 15))) || '-01'::text)))::date) OR (wyniki_wojtek.data IS NULL))
+  WHERE ((wyniki_wojtek.data = (( SELECT (((date_part('year'::text, ((now())::date + 7)) || '-'::text) || date_part('month'::text, ((now())::date + 7))) || '-01'::text)))::date) OR (wyniki_wojtek.data IS NULL))
   ORDER BY wyniki_wojtek.kolejnosc_wojtek;
 
 
