@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.9 (Ubuntu 12.9-0ubuntu0.20.04.1)
--- Dumped by pg_dump version 12.9 (Ubuntu 12.9-0ubuntu0.20.04.1)
+-- Dumped from database version 11.7 (Ubuntu 11.7-0ubuntu0.19.10.1)
+-- Dumped by pg_dump version 11.7 (Ubuntu 11.7-0ubuntu0.19.10.1)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -61,7 +61,7 @@ ALTER FUNCTION public.zuzycie(adr character varying, dt date) OWNER TO czarek;
 
 SET default_tablespace = '';
 
-SET default_table_access_method = heap;
+SET default_with_oids = false;
 
 --
 -- Name: liczniki; Type: TABLE; Schema: public; Owner: czarek
@@ -101,7 +101,8 @@ ALTER TABLE public.odczyty OWNER TO czarek;
 
 CREATE TABLE public.ordung (
     adres character varying,
-    kolejnosc integer
+    kolejnosc integer,
+    kolejnosc_wojtek integer
 );
 
 
@@ -198,6 +199,64 @@ ALTER TABLE public.najemcy_id_seq OWNER TO czarek;
 
 ALTER SEQUENCE public.najemcy_id_seq OWNED BY public.najemcy.id;
 
+
+--
+-- Name: wojtek; Type: TABLE; Schema: public; Owner: czarek
+--
+
+CREATE TABLE public.wojtek (
+    kolejnosc integer,
+    najemca character varying,
+    nr_fabryczny character varying,
+    lokalizacja character varying
+);
+
+
+ALTER TABLE public.wojtek OWNER TO czarek;
+
+--
+-- Name: wyniki_wojtek; Type: VIEW; Schema: public; Owner: czarek
+--
+
+CREATE VIEW public.wyniki_wojtek AS
+ SELECT ordung.kolejnosc_wojtek,
+    odczyty.data,
+    liczniki.adres,
+    liczniki.nr_fabryczny,
+    odczyty.odczyt,
+    rodzaje_licz.jednostka,
+    public.srednia(odczyty.adres, odczyty.data, 3) AS srednia,
+    public.zuzycie(odczyty.adres, odczyty.data) AS zuzycie,
+    (
+        CASE
+            WHEN (public.srednia(odczyty.adres, odczyty.data, 3) = (0)::numeric) THEN (0)::numeric
+            ELSE (((public.zuzycie(odczyty.adres, odczyty.data) - public.srednia(odczyty.adres, odczyty.data, 3)) * (100)::numeric) / public.srednia(odczyty.adres, odczyty.data, 3))
+        END)::numeric(10,2) AS wzrost_procent_wzgledem_sredniej
+   FROM (((public.odczyty
+     RIGHT JOIN public.liczniki USING (adres))
+     JOIN public.ordung ON (((liczniki.adres)::text = (ordung.adres)::text)))
+     LEFT JOIN public.rodzaje_licz USING (rodzaj))
+  ORDER BY odczyty.data DESC, ordung.kolejnosc_wojtek;
+
+
+ALTER TABLE public.wyniki_wojtek OWNER TO czarek;
+
+--
+-- Name: wyniki_na_01_wojtek; Type: VIEW; Schema: public; Owner: czarek
+--
+
+CREATE VIEW public.wyniki_na_01_wojtek AS
+ SELECT wyniki_wojtek.kolejnosc_wojtek,
+    wyniki_wojtek.adres,
+    wyniki_wojtek.nr_fabryczny,
+    wyniki_wojtek.odczyt,
+    wyniki_wojtek.zuzycie
+   FROM public.wyniki_wojtek
+  WHERE ((wyniki_wojtek.data = (( SELECT (((date_part('year'::text, ((now())::date + 15)) || '-'::text) || date_part('month'::text, ((now())::date + 15))) || '-01'::text)))::date) OR (wyniki_wojtek.data IS NULL))
+  ORDER BY wyniki_wojtek.kolejnosc_wojtek;
+
+
+ALTER TABLE public.wyniki_na_01_wojtek OWNER TO czarek;
 
 --
 -- Name: najemcy id; Type: DEFAULT; Schema: public; Owner: czarek

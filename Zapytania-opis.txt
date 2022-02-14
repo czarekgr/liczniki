@@ -35,5 +35,6 @@ Stara wersja jakby trzeba podać datę (dzień miesiaca zawsze 01, bo takie sa d
 8. Przerobić plik wynik.cvs na plik excela, wkleić dane do właściwego pliku
          
          
-         
-         
+     -----------------------------------------------------------------    
+         update ordung o set kolejnosc_wojtek=(select kolejnosc from wojtek w join liczniki l on ( l.nr_fabryczny=w.nr_fabryczny) where l.adres=o.adres);
+
