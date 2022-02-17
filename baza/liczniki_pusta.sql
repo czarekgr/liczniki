@@ -159,7 +159,7 @@ CREATE VIEW public.gotowe_na_01 AS
     wyniki.odczyt,
     wyniki.zuzycie
    FROM public.wyniki
-  WHERE ((wyniki.data = (( SELECT (((date_part('year'::text, ((now())::date + 7)) || '-'::text) || date_part('month'::text, ((now())::date + 7))) || '-01'::text)))::date) OR (wyniki.data IS NULL))
+  WHERE ((wyniki.kolejnosc IS NOT NULL) AND ((wyniki.data = (( SELECT (((date_part('year'::text, ((now())::date + 7)) || '-'::text) || date_part('month'::text, ((now())::date + 7))) || '-01'::text)))::date) OR (wyniki.data IS NULL)))
   ORDER BY wyniki.kolejnosc;
 
 
