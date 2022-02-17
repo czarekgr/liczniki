@@ -54,6 +54,14 @@ else:
                 record_to_insert = (data, adres, odczyt,odczyt)
                 cursor.execute(postgres_insert_query, record_to_insert)
                 conn.commit()
+        # liczniki co stoją jak chuj
+        record_to_insert = (data, 'zdemontowany490', 6,6)
+        cursor.execute(postgres_insert_query, record_to_insert)
+        conn.commit()
+        record_to_insert = (data, 'zdemontowany510', 3194,3194)
+        cursor.execute(postgres_insert_query, record_to_insert)
+        conn.commit()
+        
 
     except (Exception, psycopg2.Error) as error:
         print("Failed to insert record into mobile table", error)
