@@ -55,10 +55,10 @@ else:
                 cursor.execute(postgres_insert_query, record_to_insert)
                 conn.commit()
         # liczniki co stoją jak chuj
-        record_to_insert = (data, 'zdemontowany490', 6,6)
+        record_to_insert = (data, 'zdemontowany580', 6,6)
         cursor.execute(postgres_insert_query, record_to_insert)
         conn.commit()
-        record_to_insert = (data, 'zdemontowany510', 3194,3194)
+        record_to_insert = (data, 'zdemontowany600', 3194,3194)
         cursor.execute(postgres_insert_query, record_to_insert)
         conn.commit()
         

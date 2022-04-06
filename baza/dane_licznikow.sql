@@ -33,9 +33,6 @@ WOD	wody	m^3
 --
 
 COPY public.liczniki (adres, nr_fabryczny, opis, lokalizacja, rodzaj, kolejnosc_pdf, najemca, kolejnosc_exel, uwagi) FROM stdin;
-recznie1580	190037778A	Wodomierz PZDF	PZFD za recepcją z drabiną	WOD	\N	\N	\N	\N
-recznie1700	1920543256	Wodomierz zieleń Seewald	Dach obok chillera	WOD	\N	\N	\N	\N
-recznie1710	60587375	Wodomierz Seewald	Toalety obok szklanych drzwi, drabinka	WOD	\N	\N	\N	\N
 LM_ELE_ADR007	2316325006	AHU 1.4 HOGAN LOVELLS (63325006)	\N	ELE	1830	15	680	\N
 LM_ELE_ADR081	2316354003	SP 1 - Solution Space L01 TN 1.1 (TU5) (63354003)	\N	ELE	2130	\N	\N	nr fabryczny z pliku Wojtka
 LM_WOD_ADR236	21728054	Wodomierz Heban L00 (21728054)	\N	WOD	2730	14	1340	\N
@@ -63,7 +60,6 @@ LM_LH_ADR200	78251258	Licznik chłodu FC L03 - obieg FO (HC05, HC08) (78251258)	
 LM_LH_ADR208	62065887	Licznik chłodu serwerownia najemcy L03 - S (HC05) (62065887)	\N	LH	400	\N	\N	\N
 LM_LC_ADR93	67884164	Licznik ciepła - grzejnik Fabiana (67884164)	\N	LC	1350	\N	2110	\N
 LM_LC_ADR_B22	71649394	Licznik ciepła - Fabiana L00 (71649394)	\N	LC	2460	\N	2130	\N
-zdemontowany510	48503026G16412011087	Davide zdemontowany	\N	ELE	\N	\N	\N	\N
 LM_LC_ADR_B18	71647821	Licznik ciepła - Davide Lifestyle L01 (71647821)	\N	LC	2440	\N	2220	\N
 LM_LC_ADR89	67884165	Licznik ciepła - grzejnik Davide (67884165)	\N	LC	1340	\N	2240	\N
 LM_LC_ADR_B24	71649395	Licznik ciepła - Corneliani L01 (71649395)	\N	LC	2470	\N	2250	\N
@@ -100,6 +96,8 @@ LM_WOD_ADR246_Solution Space	181195096A	Wodomierz Solution Space kuchnia L01 (18
 LM_WOD_ADR250_Solution Space	181173780A	Wodomierz Solution Space łazienki L03 (18733482)	\N	WOD	1770	\N	1590	\N
 LM_WOD_ADR248_Solution Space	181174655A	Wodomierz Solution Space kuchnia 2 (18733476)	\N	WOD	1020	\N	1610	\N
 LM_ELE_ADR016	63326001	Centrala AHU 2 (63326001)	\N	ELE	1890	\N	\N	\N
+recznie1920	190037778A	Wodomierz PZDF	PZFD za recepcją z drabiną	WOD	\N	\N	\N	\N
+zdemontowany600	48503026G16412011087	Davide zdemontowany	\N	ELE	\N	\N	\N	\N
 LM_WOD_ADR_B75	191183429A	Wodomierz- zimna woda - CulinaryOn (19726823)	\N	WOD	2340	\N	1890	\N
 LM_ELE_ADR099	2318352007	SP K3 - Tablica TN 1.3 - Solution Space L03 (65352007)	\N	ELE	900	\N	1650	\N
 LM_WOD_ADR237	181235653A	Wodomierz LES AMIS (18740005)	\N	WOD	1690	\N	2290	\N
@@ -189,7 +187,6 @@ LM_ELE_ADR076	15420085	SP U4 - powierzchnia 0.16 (15420085)	\N	ELE	2120	\N	\N	\N
 LM_ELE_ADR085	65341010	SP K3 - Tablica TNK 3.2 - Solution Space L01 (65341010)	\N	ELE	2140	\N	\N	\N
 LM_ELE_ADR109	63371006	Magazyn U.02  (63371006)	\N	ELE	2180	\N	\N	\N
 LM_ELE_ADR097	65341005	SP K3 - Tablica TNK 3.2 - Solution Space L03 (65341005)	\N	ELE	880	\N	\N	\N
-LM_LH_ADR_B35	62065881	Licznik chłodu najemcy FC L05 HBO serw - obieg FO (HC01) (62065881)	\N	LH	2540	\N	\N	\N
 LM_WOD_ADR240	00207182	Wodomierz toalety L01 (00207182)	\N	WOD	1720	\N	\N	\N
 LM_WOD_ADR241	00207171	Wodomierz toalety L00 (00207171)	\N	WOD	1730	\N	\N	\N
 LM_WOD_ADR30	19737052	Wodomierz PZFD L03 (19737052)	\N	WOD	1780	\N	\N	\N
@@ -211,7 +208,6 @@ LM_ELE_ADR003	2316354013	AHU 2.5 HBO (63354013)	\N	ELE	1810	\N	850	\N
 LM_ELE_ADR_B06	1816331030	Licznik elektryczny Chiller CHI1 (33331030)	\N	ELE	2260	\N	930	\N
 LM_ELE_ADR010	2316371007	AHU 2.3 MBDA (63371007)	\N	ELE	2280	\N	1260	\N
 LM_WOD_ADR_B78	60600683	Wodomierz HBO (00129890)	\N	WOD	1170	\N	740	\N
-LM_WOD_ADR129	181106C29A	Wodomierz ZEGNA L01 (18727749)	\N	WOD	980	\N	1270	\N
 LM_ELE_ADR071	48503026H16502010220	SP U2 - Almidecor (dawniej powierzchnia 1.07) (16410250)	\N	ELE	800	4	1110	\N
 LM_LH_ADR217	78647934	Licznik chłodu FC L00 - AUDI (78647934)	\N	LH	1500	11	990	\N
 LM_LC_ADR171	78647936	Licznik ciepła L00 - AUDI (78647936)	\N	LC	1240	11	1000	\N
@@ -245,6 +241,7 @@ LM_ELE_ADR_B10	63284002	Licznik elektryczny - Rozdzielnica RW1 (63284002)	\N	ELE
 LM_ELE_ADR_B02	16380819	Licznik elektryczny - Davide Lifestyle (16380819)	\N	ELE	2430	\N	\N	\N
 LM_WOD_ADR_B76	16838219	Wodomierz od strony ul. Książęcej L04 (16838219)	\N	WOD	2580	\N	\N	\N
 LM_WOD_ADR_B77	16838216	Wodomierz od Kruka L04 (16838216)	\N	WOD	2590	\N	\N	\N
+LM_LH_ADR_B35	620665881	Licznik chłodu najemcy FC L05 HBO serw - obieg FO (HC01) (62065881)	\N	LH	2540	\N	\N	\N
 LM_ELE_ADR018	63326011	Rozdzielnica RM (63326011)	\N	ELE	1900	\N	\N	\N
 LM_ELE_ADR020	63311020	Tablice TA 3.3, TA 3.4, TA 3.5 (63311020)	\N	ELE	1910	\N	\N	\N
 LM_ELE_ADR022	33344025	Tablice TA 2.-1, TA 2.2, TA 2.3, TA 2.4 (33344025)	\N	ELE	1920	\N	\N	\N
@@ -257,8 +254,6 @@ LM_ELE_ADR_B05	1816331016	Licznik elektryczny Chiller CHI2 (33331016)	\N	ELE	239
 LM_LC_ADR_B46	80087615	Licznik ciepła GCN (80087615)	\N	LC	2650	\N	2010	\N
 LM_ELE_ADR_B12	272103494	Licznik elektryczny Seewald kuchnia 1 (11111111)	\N	ELE	2630	\N	910	\N
 LM_ELE_ADR_B13	272103657	Licznik elektryczny Seewald kuchnia 2 (22222222)	\N	ELE	2640	\N	920	\N
-recznie1420	1816332087	LesAmis	Rozdzielnia szafa 14	ELE	\N	\N	\N	\N
-recznie1460	36254453	MBDA woda	MBDA kuchnia, sufit za 2 lampą 	WOD	\N	\N	\N	\N
 LM_ELE_ADR075	48503026H16502010245	SP U3 - MBDA tablica TN (16380798)	\N	ELE	2690	\N	\N	\N
 LM_LC_ADR_B31	62065868	Licznik ciepła FC najemcy L04 Hogan58 - obieg FO (HC05, HC08) (62065868)	\N	LC	2480	15	600	\N
 LM_LH_ADR_B40	78251265	Licznik chłodu FC L04 Hogan - obieg FO (HC01) (78251265) (MWh)	\N	LH	1150	15	630	\N
@@ -303,18 +298,18 @@ LM_ELE_ADR_B09	1817261024	SP 1 - Główny licznik elektryczny HBO (34261024)	\N	
 LM_ELE_ADR069	48503028H16492010698	Green Cafe Nero GCN (15270553)	\N	ELE	2680	\N	380	\N
 LM_LC_ADR179	80272795	Licznik ciepła  - Solution Space L00 (80272795)	\N	LC	30	\N	1420	\N
 LM_LH_ADR33	80446698	Licznik chłodu - PZFD L03 (80446698)	\N	LH	520	\N	2500	\N
-recznie360	48503028H16492010700	CulinaryOn z drabiną	CulinaryOn +1	ELE	\N	\N	\N	\N
-recznie370	2316326009	CulinaryOn	Rozdzielnia szafa 14	ELE	\N	\N	\N	\N
-recznie400	71516192	CulinaryOn	pokój 50 poziom1	LH	\N	\N	\N	\N
-zdemontowany490	48503026H16472010063	Davide zdemontowany	\N	ELE	\N	\N	\N	\N
 LM_ELE_ADR072	48503026H16502010251	SP U3 - MBDA tablica TNK (dawniej powierzchnia 0.09) (16380803)	\N	ELE	2100	\N	1250	\N
-recznie500	48503026H16502010252	Davide ręcznie z dużą drabiną	Davide poziom 0	ELE	\N	\N	\N	\N
-recznie560	48503026H16502010237	Davide ręcznie z dużą drabiną	Davide poziom 0	ELE	\N	\N	\N	\N
-recznie810	620665888	HBO	HBO od Książencej	LH	\N	\N	\N	\N
-recznie860	160559458	HBO - Podlewanie dachu	HBO pokój kurierów	WOD	\N	\N	\N	\N
 LM_ELE_ADR068	48503026H16472010039	SP U2 - Heban - Powierzchnia 0.07 (16390068)	\N	ELE	780	\N	1380	\N
+recznie160	2316326009	CulinaryOn	Rozdzielnia szafa 14	ELE	\N	\N	\N	\N
+recznie190	71516192	CulinaryOn	pokój 50 poziom1	LH	\N	\N	\N	\N
+recznie330	1816332087	LesAmis	Rozdzielnia szafa 14	ELE	\N	\N	\N	\N
+recznie590	48503026H16502010252	Davide ręcznie z dużą drabiną	Davide poziom 0	ELE	\N	\N	\N	\N
+recznie610	48503026H16502010237	Davide ręcznie z dużą drabiną	Davide poziom 0	ELE	\N	\N	\N	\N
+recznie1090	36254453	MBDA woda	MBDA kuchnia, sufit za 2 lampą 	WOD	\N	\N	\N	\N
+recznie1480	160559458	HBO - Podlewanie dachu	HBO pokój kurierów	WOD	\N	\N	\N	\N
+recznie1530	620665888	HBO	HBO od Książencej	LH	\N	\N	\N	\N
+zdemontowany580	48503026H16472010063	Davide zdemontowany	\N	ELE	\N	\N	\N	\N
 LM_ELE_ADR125	1517311047	Hogan - logo (04311047)	\N	ELE	2670	15	700	\N
-recznie10	57783922	Almidecor wodomierz	Almidecor +1, rewizja pod umywalką	WOD	\N	4	\N	\N
 LM_ELE_ADR120	2316326003	Centrala Amaro AHU N2 - RW4 (63326003)	\N	ELE	970	13	1860	\N
 LM_ELE_ADR059	2317445001	SP K1 - Tablica TNK 1.2 - IT ERGO (64445001)	\N	ELE	720	18	480	\N
 LM_ELE_ADR084	2317445019	SP 2 - Tablica TN 2.2 IT ERGO (64445019)	\N	ELE	830	18	510	\N
@@ -322,6 +317,13 @@ LM_LC_ADR170	80091629	Licznik ciepła L03 NDI (80091629)	\N	LC	10	20	1150	\N
 LM_ELE_ADR088	2318245036	SP 3 - Tablica TN 3.3 - NDI (65245036)	\N	ELE	850	20	1180	\N
 LM_LH_ADR216	80091630	Licznik chłodu FC L03 - NDI Serwerownia (80091630)	\N	LH	430	20	1130	\N
 LM_LH_ADR215	80091631	Licznik chłodu FC L03 - NDI (80091631)	\N	LH	1440	20	1160	\N
+recznie70	57783922	Almidecor wodomierz	Almidecor +1, rewizja pod umywalką	WOD	\N	4	\N	\N
+recznie10	1920543256	Wodomierz zieleń Seewald	Dach obok chillera	WOD	\N	\N	\N	\N
+recznie150	48503028H16492010700	CulinaryOn z drabiną	CulinaryOn +1	ELE	\N	\N	\N	\N
+recznie1420	60587375	Wodomierz Seewald	Toalety obok szklanych drzwi, drabinka	WOD	\N	\N	\N	\N
+LM_WOD_ADR129	181106629A	Wodomierz ZEGNA L01 (18727749)	\N	WOD	980	\N	1270	\N
+recznie1400	80137646	Green Cafe Nero WL klimakonwektory	poziom +1 Solutions duża kuchnia	LH	\N	1	\N	\N
+recznie2010	48503026H16502010235	TPSA	Centrala telefoniczna -2	\N	\N	\N	\N	\N
 \.
 
 

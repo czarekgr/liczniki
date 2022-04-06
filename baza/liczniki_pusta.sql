@@ -166,6 +166,19 @@ CREATE VIEW public.gotowe_na_01 AS
 ALTER TABLE public.gotowe_na_01 OWNER TO czarek;
 
 --
+-- Name: kolejnosc_tmp; Type: TABLE; Schema: public; Owner: czarek
+--
+
+CREATE TABLE public.kolejnosc_tmp (
+    kolejnosc integer,
+    rodzaj character varying,
+    nr_fabryczny character varying
+);
+
+
+ALTER TABLE public.kolejnosc_tmp OWNER TO czarek;
+
+--
 -- Name: najemcy; Type: TABLE; Schema: public; Owner: czarek
 --
 
@@ -199,6 +212,19 @@ ALTER TABLE public.najemcy_id_seq OWNER TO czarek;
 
 ALTER SEQUENCE public.najemcy_id_seq OWNED BY public.najemcy.id;
 
+
+--
+-- Name: plik_wojtek; Type: TABLE; Schema: public; Owner: czarek
+--
+
+CREATE TABLE public.plik_wojtek (
+    adres character varying,
+    nr_fabryczny character varying,
+    kolejnosc integer
+);
+
+
+ALTER TABLE public.plik_wojtek OWNER TO czarek;
 
 --
 -- Name: wojtek; Type: TABLE; Schema: public; Owner: czarek
@@ -326,7 +352,7 @@ ALTER TABLE ONLY public.liczniki
 --
 
 ALTER TABLE ONLY public.odczyty
-    ADD CONSTRAINT odczyty_adres_fkey FOREIGN KEY (adres) REFERENCES public.liczniki(adres);
+    ADD CONSTRAINT odczyty_adres_fkey FOREIGN KEY (adres) REFERENCES public.liczniki(adres) DEFERRABLE;
 
 
 --
@@ -334,7 +360,7 @@ ALTER TABLE ONLY public.odczyty
 --
 
 ALTER TABLE ONLY public.ordung
-    ADD CONSTRAINT ordung_adres_fkey FOREIGN KEY (adres) REFERENCES public.liczniki(adres);
+    ADD CONSTRAINT ordung_adres_fkey FOREIGN KEY (adres) REFERENCES public.liczniki(adres) DEFERRABLE;
 
 
 --
