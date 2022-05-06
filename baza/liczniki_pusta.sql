@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.9 (Ubuntu 12.9-0ubuntu0.20.04.1)
--- Dumped by pg_dump version 12.9 (Ubuntu 12.9-0ubuntu0.20.04.1)
+-- Dumped from database version 12.10 (Ubuntu 12.10-0ubuntu0.20.04.1)
+-- Dumped by pg_dump version 12.10 (Ubuntu 12.10-0ubuntu0.20.04.1)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -75,7 +75,6 @@ CREATE TABLE public.liczniki (
     rodzaj character varying(3),
     kolejnosc_pdf integer,
     najemca integer,
-    kolejnosc_exel integer,
     uwagi character varying
 );
 
