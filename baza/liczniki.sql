@@ -806,7 +806,7 @@ recznie1420	60587375	Wodomierz Seewald	Toalety obok szklanych drzwi, drabinka	WO
 LM_WOD_ADR129	181106629A	Wodomierz ZEGNA L01 (18727749)	\N	WOD	980	\N	\N
 recznie1400	80137646	Green Cafe Nero WL klimakonwektory	poziom +1 Solutions duża kuchnia	LH	\N	1	\N
 recznie2010	48503026H16502010235	TPSA	Centrala telefoniczna -2	\N	\N	\N	\N
-LM_ELE_ADR067	48503026H16502010235	SP U1 - Powierzchnia 1.05 (16380761)	\N	ELE	770	\N	\N
+LM_ELE_ADR067	48503026H16502010235	SP U1 - Powierzchnia 1.05 (16380761)	Technogim szynotor	ELE	770	\N	\N
 \.
 
 
