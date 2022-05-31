@@ -11,7 +11,7 @@
         psql liczniki
 7. Wstawić datę i uruchomić zapytanie:
 
-copy (SELECT * FROM gotowe_na_01) TO '/home/czarek/Ethos/liczniki/wynik.csv' WITH CSV;
+copy (SELECT * FROM wyniki_na_01_wojtek) TO '/home/czarek/Ethos/liczniki/wynik.csv' WITH CSV;
 
 
 
