@@ -250,12 +250,12 @@ CREATE VIEW public.wyniki_wojtek AS
     liczniki.nr_fabryczny,
     odczyty.odczyt,
     rodzaje_licz.jednostka,
-    public.srednia(odczyty.adres, odczyty.data, 3) AS srednia,
+    public.srednia(odczyty.adres, odczyty.data, 12) AS srednia,
     public.zuzycie(odczyty.adres, odczyty.data) AS zuzycie,
     (
         CASE
-            WHEN (public.srednia(odczyty.adres, odczyty.data, 3) = (0)::numeric) THEN (0)::numeric
-            ELSE (((public.zuzycie(odczyty.adres, odczyty.data) - public.srednia(odczyty.adres, odczyty.data, 3)) * (100)::numeric) / public.srednia(odczyty.adres, odczyty.data, 3))
+            WHEN (public.srednia(odczyty.adres, odczyty.data, 12) = (0)::numeric) THEN (0)::numeric
+            ELSE (((public.zuzycie(odczyty.adres, odczyty.data) - public.srednia(odczyty.adres, odczyty.data, 12)) * (100)::numeric) / public.srednia(odczyty.adres, odczyty.data, 12))
         END)::numeric(10,2) AS wzrost_procent_wzgledem_sredniej
    FROM (((public.odczyty
      RIGHT JOIN public.liczniki USING (adres))
@@ -275,7 +275,8 @@ CREATE VIEW public.wyniki_na_01_wojtek AS
     wyniki_wojtek.adres,
     wyniki_wojtek.nr_fabryczny,
     wyniki_wojtek.odczyt,
-    wyniki_wojtek.zuzycie
+    wyniki_wojtek.zuzycie,
+    wyniki_wojtek.wzrost_procent_wzgledem_sredniej AS skok
    FROM public.wyniki_wojtek
   WHERE ((wyniki_wojtek.kolejnosc_wojtek IS NOT NULL) AND ((wyniki_wojtek.data = (( SELECT (((date_part('year'::text, ((now())::date + 7)) || '-'::text) || date_part('month'::text, ((now())::date + 7))) || '-01'::text)))::date) OR (wyniki_wojtek.data IS NULL)))
   ORDER BY wyniki_wojtek.kolejnosc_wojtek;
