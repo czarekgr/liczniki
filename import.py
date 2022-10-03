@@ -21,6 +21,11 @@ tsv_path = "raport.tsv"
 # Pobranie daty + 10 dni na wypadek konieczności robienia wcześniej, dzień ustawiony na 1
 data = (date.today() + timedelta(days=10)).replace(day=1)
 
+#####     data = '2022-09-01' # w razie importu starego itp
+
+print(data)
+
+
 
 tabula.convert_into(pdf_path, tsv_path , pages="all", output_format="tsv", stream=True)
 
