@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.11 (Ubuntu 12.11-0ubuntu0.20.04.1)
--- Dumped by pg_dump version 12.11 (Ubuntu 12.11-0ubuntu0.20.04.1)
+-- Dumped from database version 12.12 (Ubuntu 12.12-0ubuntu0.20.04.1)
+-- Dumped by pg_dump version 12.12 (Ubuntu 12.12-0ubuntu0.20.04.1)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -5862,6 +5862,7 @@ LM_ELE_ADR006	1110	1560
 LM_ELE_ADR003	1120	2100
 LM_LC_ADR_B18	3250	490
 LM_ELE_ADR077	2790	140
+LM_ELE_ADR002	\N	1695
 LM_WOD_ADR147	1590	1290
 recznie1400	\N	1400
 recznie1420	\N	1420
