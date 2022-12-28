@@ -39,7 +39,7 @@ except psycopg2.OperationalError as e:
     sys.exit(1)
 else:
     print('Connected')
-
+    exit(0)
     try:
         f=open(tsv_path)
         cursor = conn.cursor()
