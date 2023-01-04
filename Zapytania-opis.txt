@@ -11,13 +11,13 @@
         psql liczniki
 7. Wstawić datę i uruchomić zapytanie:
 
-copy (SELECT * FROM wyniki_na_01_wojtek) TO '/home/czarek/Ethos/liczniki/wynik.csv' WITH CSV;
+\copy (SELECT * FROM wyniki_na_01_wojtek) TO '/home/czarek/Ethos/liczniki/wynik.csv' WITH CSV;
 
 
 
 Stara wersja jakby trzeba podać datę (dzień miesiaca zawsze 01, bo takie sa dane)
  
- copy (SELECT
+ \copy (SELECT
             kolejnosc,
             adres,
             nr_fabryczny,
@@ -35,7 +35,7 @@ Stara wersja jakby trzeba podać datę (dzień miesiaca zawsze 01, bo takie sa d
          
   Plik dla wojtka, dane na 1 wychodzą:
   
-  copy (SELECT * FROM public.wyniki_na_01_wojtek ORDER BY kolejnosc_wojtek) TO '/home/czarek/Ethos/liczniki/wynik.csv' WITH CSV;
+  \copy (SELECT * FROM public.wyniki_na_01_wojtek ORDER BY kolejnosc_wojtek) TO '/home/czarek/Ethos/liczniki/wynik.csv' WITH CSV;
          
 
          

@@ -21,7 +21,7 @@ tsv_path = "raport.tsv"
 # Pobranie daty + 10 dni na wypadek konieczności robienia wcześniej, dzień ustawiony na 1
 data = (date.today() + timedelta(days=10)).replace(day=1)
 
-#####     data = '2022-09-01' # w razie importu starego itp
+# data = '2022-12-01' # w razie importu starego itp
 
 print(data)
 
@@ -39,7 +39,6 @@ except psycopg2.OperationalError as e:
     sys.exit(1)
 else:
     print('Connected')
-    exit(0)
     try:
         f=open(tsv_path)
         cursor = conn.cursor()
