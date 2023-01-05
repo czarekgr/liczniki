@@ -1,0 +1,5 @@
+#!/bin/bash
+
+dropdb liczniki
+createdb liczniki
+psql -d liczniki -f liczniki.sql
