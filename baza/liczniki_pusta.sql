@@ -75,7 +75,9 @@ CREATE TABLE public.liczniki (
     rodzaj character varying(3),
     kolejnosc_pdf integer,
     najemca integer,
-    uwagi character varying
+    uwagi character varying,
+    nr_fabryczny_old2023 character varying,
+    podlaczenie character varying
 );
 
 
