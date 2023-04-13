@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 14.6 (Ubuntu 14.6-0ubuntu0.22.04.1)
+-- Dumped from database version 14.7 (Ubuntu 14.7-0ubuntu0.22.04.1)
 -- Dumped by pg_dump version 14.5 (Ubuntu 14.5-0ubuntu0.22.04.1)
 
 SET statement_timeout = 0;
@@ -33,16 +33,17 @@ WOD	wody	m^3
 --
 
 COPY public.liczniki (adres, nr_fabryczny, opis, lokalizacja, rodzaj, kolejnosc_pdf, najemca, uwagi, nr_fabryczny_old2023, podlaczenie) FROM stdin;
-LM_WOD_ADR136	77436035	Wodomierz Hogan Lovells L04 - od Placu Trzech Krzyży (77902823)	Przy WC męskim	WOD	1610	15	Ultradźwiekowy, brak kabli	77902823	1/2
 LM_WOD_ADR246_Solution Space	77435241	Wodomierz Solution Space kuchnia L01 (18734955)	Duża kuchnia, nad lustrem, poziom 1	WOD	1010	6	\N	181195096A	1/2
 recznie1920	77436057	Wodomierz PZDF	PZFD za recepcją z drabiną	WOD	\N	10	\N	190037778A	1/2
-LM_WOD_ADR239	77435261	Wodomierz Leonardo L03 (18739958)	\N	WOD	1710	19	\N	181195981A	1/2
 LM_WOD_ADR_B79	77581183	Wodomierz - ciepła woda - CulinaryOn (19726824)	Przed mroźnią	WOD	2620	7	Duża drabina	191061232A	3/4
 LM_WOD_ADR140	77581166	Wodomierz piano 1 W.Kruk (16803910)	Tunel - przy wyjściu	WOD	990	16	\N	161032832	3/4
 LM_WOD_ADR242	77435242	Wodomierz Solution Space L00 (18734962)	Na końcu, nad plakatami	WOD	2310	6	\N	181195090	1/2
 LM_WOD_ADR139	57760157	Wodomierz GCN  (57760157)	\N	WOD	1620	1	Niewymieniony	57760157	\N
 LM_WOD_ADR134	19EA020537/173600458	Wodomierz ERGO - sala kinowa (17360045)	\N	WOD	1590	18	Niewymieniony - jeden zawór, za mała rewizja	19EA020537/173600458	\N
 LM_WOD_ADR249_Solution Space	77435231	Wodomierz Solution Space kuchnia 1 (18733477)	Duża kuchnia 3 piętro	WOD	100	6	\N	181174659A	1/2
+LM_WOD_ADR239	77435261	Wodomierz Leonardo L03 (18739958)	Recepcja, panel z sygnalizatorem czujki	WOD	1710	19	\N	181195981A	1/2
+LM_WOD_ADR147	77435202	Wodomierz NDI (18726655)	Przy drzwiach wejściowych wewnątrz	WOD	1000	20	\N	181022659A	1/2
+LM_WOD_ADR136	77436035	Wodomierz Hogan Lovells L04 - od Placu Trzech Krzyży (77902823)	Przy WC męskim	WOD	1610	15	Ultradźwiekowy, brak kabli, licznik kuchni od Kruka	77902823	1/2
 LM_WOD_MAIN_W	BRAK		\N	WOD	110	\N	\N	BRAK	\N
 ----	\N	---	\N	\N	\N	\N	\N	\N	\N
 LM_ELE_ADR007	2316325006	AHU 1.4 HOGAN LOVELLS (63325006)	\N	ELE	1830	15	\N	2316325006	\N
@@ -114,9 +115,9 @@ LM_ELE_ADR107	1818415001	EON L04 (35415001)	\N	ELE	2160	17	\N	1818415001	\N
 LM_LH_ADR_B47	71571363	Licznik chłodu - EON (71571363)	\N	LH	2240	17	\N	71571363	\N
 LM_WOD_ADR_B75	73305841	Wodomierz- zimna woda - CulinaryOn (19726823)	Przed mroźnią	WOD	2340	7	Duża drabina	191183429A	1/2
 LM_WOD_ADR238	77581163	Wodomierz Amaro L00 (18740019)	Nuta, korytarz, rewizja nisko	WOD	1700	13	\N	180702718A	3/4
-LM_WOD_ADR_B74	77436045	Wodomierz - EON (19700657)	Kuchnia	WOD	2250	17	\N	190405578A	1/2
 LM_WOD_ADR_B81	58376979	Wodomierz - Fabiana (58376979)	\N	WOD	2370	\N	Niewymieniony - brak dostępu	58376979	\N
 LM_WOD_ADR_B80	58376978	Wodomierz - Davide Lifestyle (58376978)	\N	WOD	2360	8	Niewymieniony - nie znaleziony	58376978	\N
+LM_WOD_ADR_B74	77436045	Wodomierz - EON (19700657)	Przed kuchnią, przy szafach	WOD	2250	17	\N	190405578A	1/2
 LM_LH_ADR_B46	71571362	Licznik chłodu - EON serwerownia (71571362)	\N	LH	2230	17	\N	71571362	\N
 LM_ELE_ADR098	2317441033	SP K3 - Tablica TNK 3.2 IT ERGO (64441033)	\N	ELE	890	18	\N	2317441033	\N
 LM_LH_ADR207	62065885	Licznik chłodu serwerownia IT ERGO (62065885)	\N	LH	1420	18	\N	62065885	\N
@@ -239,7 +240,6 @@ LM_ELE_ADR049	2316354002	Winda Piano W.Kruk (63354002)	\N	ELE	680	16	\N	23163540
 LM_LC_ADR_B45	71522586	Licznik ciepła EON (71522586)	\N	LC	2220	17	\N	71522586	\N
 LM_ELE_ADR087	2317441065	SP 3 - Tablica TN 3.2 IT ERGO (64441065)	\N	ELE	2210	18	\N	2317441065	\N
 LM_WOD_ADR132	77436051	Wodomierz ERGO - pomieszczenie(17360035)	Pokój sprzątaczek, np WC	WOD	1570	18	\N	17FA358454Q	1/2
-LM_WOD_ADR147	77435202	Wodomierz NDI (18726655)	\N	WOD	1000	20	\N	181022659A	1/2
 LM_WOD_ADR133	77435192	Wodomierz ERGO - recepcja (17360039)	Przy recepcji, między WC	WOD	1580	18	\N	17FA358457T	1/2
 LM_WOD_ADR_B78	60600683	Wodomierz HBO (00129890)	\N	WOD	1170	2	Niewymieniony	60600683	\N
 LM_WOD_ADR150	60882996	Wodomierz AUDI (00228857)	\N	WOD	1680	11	Niewymieniony - nie znaleziony	60882996	\N
