@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 
 
-import tabula 
 import psycopg2
 import sys
 import dateutil
@@ -40,10 +39,10 @@ else:
     try:
         f=open(csv_path)
         cursor = conn.cursor()
-        postgres_insert_query = """ INSERT INTO odczyty(data, adres, odczyt) VALUES(%s,%s,%s) 
+        postgres_insert_query = """ INSERT INTO odczyty(data, adres, odczyt, status) VALUES(%s,%s,%s,%s) 
                                     ON CONFLICT ON CONSTRAINT odczyty_pkey
                                     DO
-                                    UPDATE SET odczyt = %s"""
+                                    UPDATE SET odczyt = %s, status = %s"""
 
 
 
@@ -53,14 +52,15 @@ else:
             if pola[0] == 'analog-value':
                 adres = pola[1]
                 odczyt = pola[3]
-                record_to_insert = (data, adres, odczyt,odczyt)
+                status = pola[5]
+                record_to_insert = (data, adres, odczyt, status, odczyt, status)
                 cursor.execute(postgres_insert_query, record_to_insert)
                 conn.commit()
         # liczniki co stoją jak chuj
-        record_to_insert = (data, 'zdemontowany580', 6,6)
+        record_to_insert = (data, 'zdemontowany580', 6, 'Brak', 6, 'Zdemontowany')
         cursor.execute(postgres_insert_query, record_to_insert)
         conn.commit()
-        record_to_insert = (data, 'zdemontowany600', 3194,3194)
+        record_to_insert = (data, 'zdemontowany600', 3194, 'Brak', 3194, 'Zdemontowany')
         cursor.execute(postgres_insert_query, record_to_insert)
         conn.commit()
         
