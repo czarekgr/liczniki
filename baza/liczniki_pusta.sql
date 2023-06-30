@@ -77,7 +77,8 @@ CREATE TABLE public.liczniki (
     najemca integer,
     uwagi character varying,
     nr_fabryczny_old2023 character varying,
-    podlaczenie character varying
+    podlaczenie character varying,
+    typ text
 );
 
 
